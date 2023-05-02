@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Atores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list *ngIf="listaAtores">
+
+
+    <ion-item-sliding *ngFor="let ator of listaAtores">
+      <ion-item lines="full">
+
+
+        <ion-label class="ion-text-wrap">
+          <div>
+            <h1>{{ator.nome}}</h1>
+            <ion-label >{{ator.idade}}</ion-label>
+          </div>
+        </ion-label>
+
+        <ion-thumbnail slot="start">
+          <img *ngIf="ator.foto" src="{{ator.foto}}" />
+          <ion-icon *ngIf="!ator.foto" name="videocam-off"></ion-icon>
+        </ion-thumbnail>
+
+        <ion-chip [color]="ator.classificacao < 5 ? 'danger' : ((ator.classificacao < 7 ? 'warning' : 'success'))"
+        outline>
+        
+        <ion-icon name="star" [color]="ator.favorito===true ? 'warning' : ('light')"></ion-icon>
+
+        <ion-label>{{ator.classificacao}}</ion-label>
+      </ion-chip>
+    </ion-item>
+
+
+
+
+
+      <ion-item-options side="end">
+        <ion-item-option color="primary" >
+          <ion-icon slot="icon-only" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
